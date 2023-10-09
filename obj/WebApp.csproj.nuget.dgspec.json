@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\source\\repos\\WebApp\\WebApp.csproj": {}
+    "C:\\Users\\Nazrin.asgarova\\Desktop\\Api\\WebApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\source\\repos\\WebApp\\WebApp.csproj": {
+    "C:\\Users\\Nazrin.asgarova\\Desktop\\Api\\WebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\source\\repos\\WebApp\\WebApp.csproj",
+        "projectUniqueName": "C:\\Users\\Nazrin.asgarova\\Desktop\\Api\\WebApp.csproj",
         "projectName": "WebApp",
-        "projectPath": "C:\\Users\\USER\\source\\repos\\WebApp\\WebApp.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\source\\repos\\WebApp\\obj\\",
+        "projectPath": "C:\\Users\\Nazrin.asgarova\\Desktop\\Api\\WebApp.csproj",
+        "packagesPath": "C:\\Users\\Nazrin.asgarova\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nazrin.asgarova\\Desktop\\Api\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Nazrin.asgarova\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +44,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.11, )"
@@ -78,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
