@@ -27,7 +27,7 @@ namespace WebApp.Controllers
         [HttpGet("get")]
         public async Task<IActionResult> Get(int id)
         {
-            Product product = await _productRepository.GetById(c => c.Id == id & c.IsActive, "Category");
+            Product product = await _productRepository.Get(c => c.Id == id & c.IsActive & c.Category.IsActive, "Category");
             if (product is null) return NotFound();
             ProductGetDTO getProduct = _mapper.Map<ProductGetDTO>(product);
             return Ok(getProduct);
@@ -37,7 +37,7 @@ namespace WebApp.Controllers
         [HttpGet("get-all")]
         public async Task<IActionResult> GetAll()
         {
-            List<Product> products = await _productRepository.GetAll(c => c.IsActive,"Category");
+            List<Product> products = await _productRepository.GetAll(c => c.IsActive & c.Category.IsActive, "Category");
             if (products.Count == 0) return NotFound();
             List<ProductGetDTO> getProducts = _mapper.Map<List<ProductGetDTO>>(products);
             return Ok(getProducts);
@@ -50,7 +50,7 @@ namespace WebApp.Controllers
             if (product is null) return BadRequest();
 
             Product newProduct = _mapper.Map<Product>(product);
-            Category category = await _categoryRepository.GetById(c => c.Id == product.CategoryId);
+            Category category = await _categoryRepository.Get(c => c.Id == product.CategoryId);
             newProduct.Category = category;
             await _productRepository.Create(newProduct);
 
@@ -63,13 +63,15 @@ namespace WebApp.Controllers
         {
             if (product is null) return BadRequest();
 
-            var exsistProduct = await _productRepository.GetById(c => c.Id == id);
+            var exsistProduct = await _productRepository.Get(c => c.Id == id & c.IsActive & c.Category.IsActive);
             if (exsistProduct is null) return BadRequest();
 
-            var category = await _categoryRepository.GetById(c => c.Name == product.CategoryName);
+            var category = await _categoryRepository.Get(c => c.Name == product.CategoryName & c.IsActive);
             if (category is null) return BadRequest();
 
-            exsistProduct = _mapper.Map<Product>(product);
+            exsistProduct.Price=product.Price;
+            exsistProduct.Name=product.Name;
+            exsistProduct.Category=category;
             await _productRepository.Update(exsistProduct);
 
             return Ok();
@@ -79,7 +81,7 @@ namespace WebApp.Controllers
         [HttpDelete("delete")]
         public async Task<IActionResult> Delete(int id)
         {
-            Product exsistProduct = await _productRepository.GetById(c => c.Id == id);
+            Product exsistProduct = await _productRepository.Get(c => c.Id == id & c.IsActive & c.Category.IsActive);
             if (exsistProduct is null) return BadRequest();
 
             exsistProduct.IsActive = false;

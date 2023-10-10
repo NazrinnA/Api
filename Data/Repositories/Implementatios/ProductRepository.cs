@@ -39,7 +39,7 @@ namespace WebApp.Context.Repositories.Implementatios
             return exp == null ? await query.ToListAsync() : await query.Where(exp).ToListAsync();
         }
 
-        public async Task<Product> GetById(Expression<Func<Product, bool>> exp = null, params string[] includes)
+        public async Task<Product> Get(Expression<Func<Product, bool>> exp = null, params string[] includes)
         {
             IQueryable<Product> query = _db.Products;
             if (includes is not null)
